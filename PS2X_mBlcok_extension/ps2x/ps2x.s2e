@@ -1,0 +1,150 @@
+{	
+	"extensionName": "PS2X_lib",
+	"description": "PS2 Remoter module published on Sep 2017",
+	"version": "1.5",
+	"author": "Poyu Chen(b0812en@gmail.com)",
+	"homepage": "https://github.com/bofish",
+	"sort":0,
+	"javascriptURL":"js/ps2x.js",
+  	"firmware":"1.0",
+  	"extensionPort":0,
+	"blockSpecs": [
+
+		[
+			"w",
+			"Setup PS2_DAT: %n, PS2_CMD: %n, PS2_ATT: %n, PS2_CLK: %n",
+			"Setup",
+			"13",
+			"11",
+			"10",
+			"12",
+			{
+				"setup":"ps2x.config_gamepad({3}, {1}, {2}, {0}, false, false);\n",
+				"inc":"#include \"PS2X_lib.h\"",
+				"def":"PS2X ps2x;\n",
+				"work":"",
+				"loop":""
+			}
+		],
+		[
+			"w",
+			"Start Detect PS2 remoter",
+			"Start",
+			{
+				"setup":"",
+				"inc":"",
+				"def":"",
+				"work":"ps2x.read_gamepad(false, 0);\n",
+				"loop":""
+			}
+		],
+		[
+			"b",
+			"The %d.buttons button was pressed",
+			"Pressed",
+			"TRIANGLE",
+			{
+				"setup":"",
+				"inc":"",
+				"def":"",
+				"work":"ps2x.ButtonPressed({0})",
+				"loop":""
+			}
+		],
+		[
+			"b",
+			"The %d.buttons button was just Released",
+			"Released",
+			"CIRCLE",
+			{
+				"setup":"",
+				"inc":"",
+				"def":"",
+				"work":"ps2x.ButtonReleased({0})",
+				"loop":""
+			}
+		],
+		[
+			"b",
+			"The %d.buttons button keep pressing",
+			"KeepPressed",
+			"SQUARE",
+			{
+				"setup":"",
+				"inc":"",
+				"def":"",
+				"work":"ps2x.Button({0})",
+				"loop":""
+			}
+		],
+		[
+			"r",
+			"%d.sticks stick value",
+			"StickAnalog",
+			"RIGHT_HORIZONTAL",
+			{
+				"setup":"",
+				"inc":"",
+				"def":"",
+				"work":"ps2x.Analog({0})",
+				"loop":""
+			}
+		]
+
+	],
+
+	"menus": {
+		"buttons":["SELECT","L3","R3","START","UP","RIGHT","DOWN","LEFT","L2","R2","L1","R1","TRIANGLE","CIRCLE","CROSS","SQUARE"],
+		"sticks":["RIGHT_HORIZONTAL","RIGHT_VERTICAL","LEFT_HORIZONTAL","LEFT_VERTICAL"]
+		
+	},
+
+	"values":{
+		"SELECT":1,
+		"L3":2,
+		"R3":4,
+		"START":8,
+		"UP":16,
+		"RIGHT":32,
+		"DOWN":64,
+		"LEFT":128,
+		"L2":256,
+		"R2":512,
+		"L1":1024,
+		"R1":2048,
+		"TRIANGLE":4096,
+		"CIRCLE":8192,
+		"CROSS":16384,
+		"SQUARE":32768,
+		"RIGHT_HORIZONTAL":5,
+		"RIGHT_VERTICAL":6,
+		"LEFT_HORIZONTAL":7,
+		"LEFT_VERTICAL":8
+	},
+
+
+	"translators":{
+		"zh_TW":{
+			"SELECT":"選擇鍵",
+			"START":"開始鍵",
+			"RIGHT":"右按鍵",
+			"LEFT":"左按鍵",
+			"DOWN":"下按鍵",
+			"UP":"上按鍵",
+			"CIRCLE":"圓圈",
+			"CROSS":"叉號",
+			"SQUARE":"正方形",
+			"TRIANGLE":"三角形",
+			"RIGHT_HORIZONTAL":"右搖桿的水平",
+			"RIGHT_VERTICAL":"右搖桿的垂直",
+			"LEFT_HORIZONTAL":"左搖桿的水平",
+			"LEFT_VERTICAL":"左搖桿的水平",
+			"Setup PS2_DAT: %n, PS2_CMD: %n, PS2_ATT: %n, PS2_CLK: %n":"設置 PS2_DAT: %n, PS2_CMD: %n, PS2_ATT: %n, PS2_CLK: %n",
+			"Start Detect PS2 remoter":"開始偵測PS2搖桿按鈕",
+			"The %d.buttons button was pressed":"%d.buttons 按鈕被壓下",
+			"The %d.buttons button was just Released":"放開 %d.buttons 按鈕",
+			"The %d.buttons button keep pressing":"一直壓著 %d.buttons 按鈕",
+			"%d.sticks stick value":"讀取 %d.sticks 數值大小",
+		}
+	}
+}
